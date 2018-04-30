@@ -11,7 +11,7 @@ import uk.co.purewowstudio.mvp.mvp.data.models.Posts
 import javax.inject.Inject
 
 class PostsViewModel @Inject constructor(application: Application,
-                                         val postsObservable: Observable<List<Posts>>) : AndroidViewModel(application) {
+                                         private val postsObservable: Observable<List<Posts>>) : AndroidViewModel(application) {
 
     private var posts = MutableLiveData<List<Posts>>()
 
