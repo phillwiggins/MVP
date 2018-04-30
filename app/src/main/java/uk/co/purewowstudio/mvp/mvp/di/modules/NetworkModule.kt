@@ -1,10 +1,11 @@
-package uk.co.purewowstudio.mvp.mvp.di
+package uk.co.purewowstudio.mvp.mvp.di.modules
 
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Named
 import javax.inject.Singleton
 
@@ -24,17 +25,17 @@ class NetworkModule {
         val builder = Retrofit.Builder()
         builder.baseUrl(getBaseURL())
         builder.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        builder.addConverterFactory(GsonConverterFactory.create())
+        builder.client(getOkHttp())
         return builder.build()
     }
 
-    @Singleton
     @Provides
     @Named("baseUrl")
     fun getBaseURL(): String {
         return "https://jsonplaceholder.typicode.com/"
     }
 
-    @Singleton
     @Provides
     @Named("apiKey")
     fun getApiKey(): String {

@@ -32,13 +32,25 @@ ext {
     okHttp = "3.10.0"
     retroFit = "2.4.0"
     gson = "2.8.3"
+    arch = "1.1.1"
+    room = "1.0.0"
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+
+    implementation "android.arch.lifecycle:extensions:$arch"
+    implementation "android.arch.lifecycle:viewmodel:$arch"
+    implementation "android.arch.lifecycle:livedata:$arch"
+    annotationProcessor "android.arch.lifecycle:compiler:$arch"
+    implementation "android.arch.persistence.room:runtime:$room"
+    annotationProcessor "android.arch.persistence.room:compiler:$room"
+
+    // Paging
+    implementation "android.arch.paging:runtime:1.0.0-rc1"
 
     implementation "com.google.dagger:dagger-android:$dagger"
     kapt "com.google.dagger:dagger-android-processor:$dagger"
