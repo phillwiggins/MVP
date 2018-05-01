@@ -10,6 +10,7 @@ import uk.co.purewowstudio.mvp.mvp.data.viewmodels.PostsViewModel
 import uk.co.purewowstudio.mvp.mvp.di.ApplicationComponent
 import uk.co.purewowstudio.mvp.mvp.di.modules.ApplicationModule
 import uk.co.purewowstudio.mvp.mvp.di.DaggerApplicationComponent
+import uk.co.purewowstudio.mvp.mvp.di.modules.RoomModule
 import uk.co.purewowstudio.mvp.mvp.utils.logDebug
 import uk.co.purewowstudio.mvp.mvp.utils.observe
 import uk.co.purewowstudio.mvp.mvp.utils.withViewModel
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         mComponent = DaggerApplicationComponent.builder()
                 .applicationModule(ApplicationModule(this.application as MainApplication))
+                .roomModule(RoomModule(this.application))
                 .build()
 
         mComponent?.inject(this)
